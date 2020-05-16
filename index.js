@@ -4,7 +4,7 @@ const neuralNet = require("./generalNeuralNetwork");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const totalSuggestions = 2;
+const totalSuggestions = 10;
 
 // ! creattion of neural network models
 const counter = 50;
@@ -42,13 +42,34 @@ const Kale = neuralNet(4, 21, counter);
 const Kiwifruit = neuralNet(5, 35, counter);
 const Kohlrabi = neuralNet(7, 24, counter);
 const Leek = neuralNet(13, 24, counter);
-const consttuce = neuralNet(15, 25, counter);
+const Lettuce = neuralNet(15, 25, counter);
 
 const Mustard_Greens = neuralNet(10, 35, counter);
 const Okra = neuralNet(18, 32, counter);
 const Onion = neuralNet(8, 30, counter);
 const Oregano = neuralNet(15, 25, counter);
 const Parsley = neuralNet(7, 20, counter);
+
+const Parsnip = neuralNet(15, 20, counter);
+const Peanut = neuralNet(15, 34, counter);
+const Pineapple = neuralNet(23, 32, counter);
+const Potato = neuralNet(12, 27, counter);
+const Radish = neuralNet(5, 20, counter);
+
+const Raspberry = neuralNet(10, 25, counter);
+const Rhubarb = neuralNet(5, 20, counter);
+const Rosemary = neuralNet(6, 24, counter);
+const Sage = neuralNet(10, 25, counter);
+const Shallots = neuralNet(13, 24, counter);
+
+const Spinach = neuralNet(-7, 21, counter);
+const Strawberry = neuralNet(2, 30, counter);
+const Sugarcane = neuralNet(26, 33, counter);
+const Thyme = neuralNet(4, 28, counter);
+const Tomato = neuralNet(21, 29, counter);
+
+const Turnip = neuralNet(10, 18, counter);
+const Watermelon = neuralNet(18, 28, counter);
 //
 
 app.get("/", (req, res) => {
@@ -73,7 +94,6 @@ app.get("/suggestions", (req, res) => {
   const Cauliflowerprob = Cauliflower.run([minTemp, maxTemp])[0];
   const Celeryprob = Celery.run([minTemp, maxTemp])[0];
   const Chicoryprob = Chicory.run([minTemp, maxTemp])[0];
-
   const Chilli_Pepperprob = Chilli_Pepper.run([minTemp, maxTemp])[0];
   const Chinese_Cabbageprob = Chinese_Cabbage.run([minTemp, maxTemp])[0];
   const Chivesprob = Chives.run([minTemp, maxTemp])[0];
@@ -87,22 +107,86 @@ app.get("/suggestions", (req, res) => {
   const Gingerprob = Ginger.run([minTemp, maxTemp])[0];
   const Horseradishprob = Horseradish.run([minTemp, maxTemp])[0];
   const Kaleprob = Kale.run([minTemp, maxTemp])[0];
-
   const Kiwifruitprob = Kiwifruit.run([minTemp, maxTemp])[0];
   const Kohlrabiprob = Kohlrabi.run([minTemp, maxTemp])[0];
   const Leekprob = Leek.run([minTemp, maxTemp])[0];
-  const consttuceprob = consttuce.run([minTemp, maxTemp])[0];
+  const Lettuceprob = Lettuce.run([minTemp, maxTemp])[0];
   const Mustard_Greensprob = Mustard_Greens.run([minTemp, maxTemp])[0];
   const Okraprob = Okra.run([minTemp, maxTemp])[0];
   const Onionprob = Onion.run([minTemp, maxTemp])[0];
   const Oreganoprob = Oregano.run([minTemp, maxTemp])[0];
   const Parsleyprob = Parsley.run([minTemp, maxTemp])[0];
+  const Parsnipprob = Parsnip.run([minTemp, maxTemp])[0];
+  const Peanutprob = Peanut.run([minTemp, maxTemp])[0];
+  const Pineappleprob = Pineapple.run([minTemp, maxTemp])[0];
+  const Potatoprob = Potato.run([minTemp, maxTemp])[0];
+  const Radishprob = Radish.run([minTemp, maxTemp])[0];
+  const Raspberryprob = Raspberry.run([minTemp, maxTemp])[0];
+  const Rhubarbprob = Rhubarb.run([minTemp, maxTemp])[0];
+  const Rosemaryprob = Rosemary.run([minTemp, maxTemp])[0];
+  const Sageprob = Sage.run([minTemp, maxTemp])[0];
+  const Shallotsprob = Shallots.run([minTemp, maxTemp])[0];
+  const Spinachprob = Spinach.run([minTemp, maxTemp])[0];
+  const Strawberryprob = Strawberry.run([minTemp, maxTemp])[0];
+  const Sugarcaneprob = Sugarcane.run([minTemp, maxTemp])[0];
+  const Thymeprob = Thyme.run([minTemp, maxTemp])[0];
+  const Tomatoprob = Tomato.run([minTemp, maxTemp])[0];
+  const Turnipprob = Turnip.run([minTemp, maxTemp])[0];
+  const Watermelonprob = Watermelon.run([minTemp, maxTemp])[0];
 
   var finalResult = [
     { key: "Asparagus", value: Asparagusprob },
     { key: "Basil", value: Basilprob },
     { key: "Beet", value: Beetprob },
     { key: "Black Pepper", value: Black_Pepperprob },
+    { key: "Broccoli", value: Broccoliprob },
+    { key: "Brussels Sprouts", value: Brussels_Sproutsprob },
+    { key: "Cabbage", value: Cabbageprob },
+    { key: "Capsicum", value: Capsicumprob },
+    { key: "Cardamom", value: Cardamomprob },
+    { key: "Carrot", value: Carrotprob },
+    { key: "Cauliflower", value: Cauliflowerprob },
+    { key: "Celery", value: Celeryprob },
+    { key: "Chicory", value: Chicoryprob },
+    { key: "Chilli Pepper", value: Chilli_Pepperprob },
+    { key: "Chinese Cabbage", value: Chinese_Cabbageprob },
+    { key: "Chives", value: Chivesprob },
+    { key: "Coriander", value: Corianderprob },
+    { key: "Cucumber", value: Cucumberprob },
+    { key: "Dill", value: Dillprob },
+    { key: "Eggplant", value: Eggplantprob },
+    { key: "Endive", value: Endiveprob },
+    { key: "Garden Cress", value: Garden_Cressprob },
+    { key: "Garlic", value: Garlicprob },
+    { key: "Ginger", value: Gingerprob },
+    { key: "Horseradish", value: Horseradishprob },
+    { key: "Kale", value: Kaleprob },
+    { key: "Kiwifruit", value: Kiwifruitprob },
+    { key: "Kohlrabi", value: Kohlrabiprob },
+    { key: "Leek", value: Leekprob },
+    { key: "Lettuce", value: Lettuceprob },
+    { key: "Mustard Greens", value: Mustard_Greensprob },
+    { key: "Okra", value: Okraprob },
+    { key: "Onion", value: Onionprob },
+    { key: "Oregano", value: Oreganoprob },
+    { key: "Parsley", value: Parsleyprob },
+    { key: "Parsnip", value: Parsnipprob },
+    { key: "Peanut", value: Peanutprob },
+    { key: "Pineapple", value: Pineappleprob },
+    { key: "Potato", value: Potatoprob },
+    { key: "Radish", value: Radishprob },
+    { key: "Raspberry", value: Raspberryprob },
+    { key: "Rhubarb", value: Rhubarbprob },
+    { key: "Rosemary", value: Rosemaryprob },
+    { key: "Sage", value: Sageprob },
+    { key: "Shallots", value: Shallotsprob },
+    { key: "Spinach", value: Spinachprob },
+    { key: "Strawberry", value: Strawberryprob },
+    { key: "Sugarcane", value: Sugarcaneprob },
+    { key: "Thyme", value: Thymeprob },
+    { key: "Tomato", value: Tomatoprob },
+    { key: "Turnip", value: Turnipprob },
+    { key: "Watermelon", value: Watermelonprob },
   ];
 
   finalResult = finalResult.sort((obj1, obj2) => {
