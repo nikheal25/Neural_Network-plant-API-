@@ -1,5 +1,4 @@
 const express = require("express");
-// const asparagusNN = require("./neuralNetworks");
 const neuralNet = require("./generalNeuralNetwork");
 const app = express();
 const port = process.env.PORT || 3000;
