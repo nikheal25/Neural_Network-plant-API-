@@ -5,84 +5,104 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // ! creattion of neural network models
-let counter = 50;
-let Asparagus = neuralNet(16, 30, counter);
-let Basil = neuralNet(10, 27, counter);
-let Beet = neuralNet(15, 26, counter);
-let Black_Pepper = neuralNet(12, 30, counter);
-let Broccoli = neuralNet(15, 20, counter);
+const counter = 50;
+const Asparagus = neuralNet(16, 30, counter);
+const Basil = neuralNet(10, 27, counter);
+const Beet = neuralNet(15, 26, counter);
+const Black_Pepper = neuralNet(12, 30, counter);
+const Broccoli = neuralNet(15, 20, counter);
 
-let Brussels_Sprouts = neuralNet(7, 24, counter);
-let Cabbage = neuralNet(4, 21, counter);
-let Capsicum = neuralNet(18, 30, counter);
-let Cardamom = neuralNet(17, 25, counter);
-let Carrot = neuralNet(10, 24, counter);
+const Brussels_Sprouts = neuralNet(7, 24, counter);
+const Cabbage = neuralNet(4, 21, counter);
+const Capsicum = neuralNet(18, 30, counter);
+const Cardamom = neuralNet(17, 25, counter);
+const Carrot = neuralNet(10, 24, counter);
 
-let Cauliflower = neuralNet(16, 24, counter);
-let Celery = neuralNet(5, 27, counter);
-let Chicory = neuralNet(10, 24, counter);
-let Chilli_Pepper = neuralNet(18, 30, counter);
-let Chinese_Cabbage = neuralNet(13, 21, counter);
+const Cauliflower = neuralNet(16, 24, counter);
+const Celery = neuralNet(5, 27, counter);
+const Chicory = neuralNet(10, 24, counter);
+const Chilli_Pepper = neuralNet(18, 30, counter);
+const Chinese_Cabbage = neuralNet(13, 21, counter);
 
-let Chives = neuralNet(5, 30, counter);
-let Coriander = neuralNet(17, 27, counter);
-let Cucumber = neuralNet(15, 30, counter);
-let Dill = neuralNet(15, 32, counter);
-let Eggplant = neuralNet(21, 32, counter);
+const Chives = neuralNet(5, 30, counter);
+const Coriander = neuralNet(17, 27, counter);
+const Cucumber = neuralNet(15, 30, counter);
+const Dill = neuralNet(15, 32, counter);
+const Eggplant = neuralNet(21, 32, counter);
 
-let Endive = neuralNet(15, 24, counter);
-let Garden_Cress = neuralNet(13, 24, counter);
-let Garlic = neuralNet(9, 28, counter);
-let Ginger = neuralNet(15, 30, counter);
-let Horseradish = neuralNet(7, 23, counter);
+const Endive = neuralNet(15, 24, counter);
+const Garden_Cress = neuralNet(13, 24, counter);
+const Garlic = neuralNet(9, 28, counter);
+const Ginger = neuralNet(15, 30, counter);
+const Horseradish = neuralNet(7, 23, counter);
 
-let Kale = neuralNet(4, 21, counter);
-let Kiwifruit = neuralNet(5, 35, counter);
-let Kohlrabi = neuralNet(7, 24, counter);
-let Leek = neuralNet(13, 24, counter);
-let Lettuce = neuralNet(15, 25, counter);
+const Kale = neuralNet(4, 21, counter);
+const Kiwifruit = neuralNet(5, 35, counter);
+const Kohlrabi = neuralNet(7, 24, counter);
+const Leek = neuralNet(13, 24, counter);
+const consttuce = neuralNet(15, 25, counter);
 
-let Mustard_Greens = neuralNet(10, 35, counter);
-let Okra = neuralNet(18, 32, counter);
-let Onion = neuralNet(8, 30, counter);
-let Oregano = neuralNet(15, 25, counter);
-let Parsley = neuralNet(7, 20, counter);
+const Mustard_Greens = neuralNet(10, 35, counter);
+const Okra = neuralNet(18, 32, counter);
+const Onion = neuralNet(8, 30, counter);
+const Oregano = neuralNet(15, 25, counter);
+const Parsley = neuralNet(7, 20, counter);
 //
 
 app.get("/", (req, res) => {
-  console.log("app-------------------");
   //   res.set("Content-Type", "text/plain");
   res.json({ message: "hello" });
 });
 
 app.get("/suggestions", (req, res) => {
-  console.log("suggested-------------------");
+  const minTemp = 0;
+  const maxTemp = 15;
 
-  let prob = Asparagus.run([12, 15]);
-  console.log(prob);
+  const Asparagusprob = Asparagus.run([minTemp, maxTemp])[0];
+  const Basilprob = Basil.run([minTemp, maxTemp])[0];
+  const Beetprob = Beet.run([minTemp, maxTemp])[0];
+  const Black_Pepperprob = Black_Pepper.run([minTemp, maxTemp])[0];
+  const Broccoliprob = Broccoli.run([minTemp, maxTemp])[0];
+  const Brussels_Sproutsprob = Brussels_Sprouts.run([minTemp, maxTemp])[0];
+  const Cabbageprob = Cabbage.run([minTemp, maxTemp])[0];
+  const Capsicumprob = Capsicum.run([minTemp, maxTemp])[0];
+  const Cardamomprob = Cardamom.run([minTemp, maxTemp])[0];
+  const Carrotprob = Carrot.run([minTemp, maxTemp])[0];
+  const Cauliflowerprob = Cauliflower.run([minTemp, maxTemp])[0];
+  const Celeryprob = Celery.run([minTemp, maxTemp])[0];
+  const Chicoryprob = Chicory.run([minTemp, maxTemp])[0];
 
-  prob = Basil.run([12, 15]);
-  console.log(prob);
-  prob = Beet.run([12, 15]);
-  console.log(prob);
-  prob = Black_Pepper.run([12, 15]);
-  console.log(prob);
-  prob = Broccoli.run([12, 15]);
-  console.log(prob);
-  prob = Brussels_Sprouts.run([12, 15]);
-  console.log(prob);
-  prob = Cabbage.run([12, 15]);
+  const Chilli_Pepperprob = Chilli_Pepper.run([minTemp, maxTemp])[0];
+  const Chinese_Cabbageprob = Chinese_Cabbage.run([minTemp, maxTemp])[0];
+  const Chivesprob = Chives.run([minTemp, maxTemp])[0];
+  const Corianderprob = Coriander.run([minTemp, maxTemp])[0];
+  const Cucumberprob = Cucumber.run([minTemp, maxTemp])[0];
+  const Dillprob = Dill.run([minTemp, maxTemp])[0];
+  const Eggplantprob = Eggplant.run([minTemp, maxTemp])[0];
+  const Endiveprob = Endive.run([minTemp, maxTemp])[0];
+  const Garden_Cressprob = Garden_Cress.run([minTemp, maxTemp])[0];
+  const Garlicprob = Garlic.run([minTemp, maxTemp])[0];
+  const Gingerprob = Ginger.run([minTemp, maxTemp])[0];
+  const Horseradishprob = Horseradish.run([minTemp, maxTemp])[0];
+  const Kaleprob = Kale.run([minTemp, maxTemp])[0];
 
-  prob = Cabbage.run([12, 15]);
-  console.log(prob);
+  const Kiwifruitprob = Kiwifruit.run([minTemp, maxTemp])[0];
+  const Kohlrabiprob = Kohlrabi.run([minTemp, maxTemp])[0];
+  const Leekprob = Leek.run([minTemp, maxTemp])[0];
+  const consttuceprob = consttuce.run([minTemp, maxTemp])[0];
+  const Mustard_Greensprob = Mustard_Greens.run([minTemp, maxTemp])[0];
+  const Okraprob = Okra.run([minTemp, maxTemp])[0];
+  const Onionprob = Onion.run([minTemp, maxTemp])[0];
+  const Oreganoprob = Oregano.run([minTemp, maxTemp])[0];
+  const Parsleyprob = Parsley.run([minTemp, maxTemp])[0];
+
   res.json({
     crops:
-      "Asparagus,Broccoli,Brussels Sprouts,Garlic,Kale,Kohlrabi,Onion,Celery,Lettuce,Kohlrabi,Mustard Greens,Peanut",
+      "Asparagus,Broccoli,Brussels Sprouts,Garlic,Kale,Kohlrabi,Onion,Celery,consttuce,Kohlrabi,Mustard Greens,Peanut",
   });
 });
 
 app.post("/post", (req, res) => {
-  console.log("post----------------------------------");
   res.set("Content-Type", "text/plain");
   res.send("Hello World!");
 });
