@@ -46,20 +46,20 @@ app.get("/", (req, res) => {
 app.get("/suggestions", (req, res) => {
   console.log("suggested-------------------");
 
-  let prob = asparagusNN.run([12, 15]);
+  let prob = Asparagus.run([12, 15]);
   console.log(prob);
 
-  prob = asparagusNN.run([12, 15]);
+  prob = Basil.run([12, 15]);
   console.log(prob);
-  prob = basilNN.run([12, 15]);
+  prob = Beet.run([12, 15]);
   console.log(prob);
-  prob = beetNN.run([12, 15]);
+  prob = Black_Pepper.run([12, 15]);
   console.log(prob);
-  prob = asparagusNN.run([12, 15]);
+  prob = Broccoli.run([12, 15]);
   console.log(prob);
-  prob = blackPepperNN.run([12, 15]);
+  prob = Brussels_Sprouts.run([12, 15]);
   console.log(prob);
-  prob = broccoliNN.run([12, 15]);
+  prob = Cabbage.run([12, 15]);
   console.log(prob);
   res.json({
     crops:
