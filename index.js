@@ -30,11 +30,23 @@ let Cucumber = neuralNet(15, 30, counter);
 let Dill = neuralNet(15, 32, counter);
 let Eggplant = neuralNet(21, 32, counter);
 
-// let Chives = neuralNet(5, 30, counter);
-// let Coriander = neuralNet(17, 27, counter);
-// let Cucumber = neuralNet(15, 30, counter);
-// let Dill = neuralNet(15, 32, counter);
-// let Eggplant = neuralNet(21, 32, counter);
+let Endive = neuralNet(15, 24, counter);
+let Garden_Cress = neuralNet(13, 24, counter);
+let Garlic = neuralNet(9, 28, counter);
+let Ginger = neuralNet(15, 30, counter);
+let Horseradish = neuralNet(7, 23, counter);
+
+let Kale = neuralNet(4, 21, counter);
+let Kiwifruit = neuralNet(5, 35, counter);
+let Kohlrabi = neuralNet(7, 24, counter);
+let Leek = neuralNet(13, 24, counter);
+let Lettuce = neuralNet(15, 25, counter);
+
+let Mustard_Greens = neuralNet(10, 35, counter);
+let Okra = neuralNet(18, 32, counter);
+let Onion = neuralNet(8, 30, counter);
+let Oregano = neuralNet(15, 25, counter);
+let Parsley = neuralNet(7, 20, counter);
 //
 
 app.get("/", (req, res) => {
@@ -59,6 +71,8 @@ app.get("/suggestions", (req, res) => {
   console.log(prob);
   prob = Brussels_Sprouts.run([12, 15]);
   console.log(prob);
+  prob = Cabbage.run([12, 15]);
+
   prob = Cabbage.run([12, 15]);
   console.log(prob);
   res.json({
