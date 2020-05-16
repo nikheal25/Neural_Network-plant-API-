@@ -4,6 +4,8 @@ const neuralNet = require("./generalNeuralNetwork");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const totalSuggestions = 2;
+
 // ! creattion of neural network models
 const counter = 50;
 const Asparagus = neuralNet(16, 30, counter);
@@ -96,9 +98,31 @@ app.get("/suggestions", (req, res) => {
   const Oreganoprob = Oregano.run([minTemp, maxTemp])[0];
   const Parsleyprob = Parsley.run([minTemp, maxTemp])[0];
 
+  var finalResult = [
+    { key: "Asparagus", value: Asparagusprob },
+    { key: "Basil", value: Basilprob },
+    { key: "Beet", value: Beetprob },
+    { key: "Black Pepper", value: Black_Pepperprob },
+  ];
+
+  finalResult = finalResult.sort((obj1, obj2) => {
+    return obj2.value - obj1.value;
+  });
+  console.table(finalResult);
+
+  var cropList = "";
+  finalResult.forEach((obj, i) => {
+    if (i <= totalSuggestions) {
+      cropList = cropList.concat(obj.key);
+    }
+    if (i < totalSuggestions) {
+      cropList = cropList.concat(",");
+    }
+  });
+  console.log(cropList);
+  // "Asparagus,Broccoli,Brussels Sprouts,Garlic,Kale,Kohlrabi,Onion,Celery,Kohlrabi,Mustard Greens,Peanut",
   res.json({
-    crops:
-      "Asparagus,Broccoli,Brussels Sprouts,Garlic,Kale,Kohlrabi,Onion,Celery,consttuce,Kohlrabi,Mustard Greens,Peanut",
+    crops: cropList,
   });
 });
 
