@@ -13,73 +13,64 @@ const Basil = neuralNet(10, 27, counter);
 const Beet = neuralNet(15, 26, counter);
 const Black_Pepper = neuralNet(12, 30, counter);
 const Broccoli = neuralNet(15, 20, counter);
-
 const Brussels_Sprouts = neuralNet(7, 24, counter);
 const Cabbage = neuralNet(4, 21, counter);
 const Capsicum = neuralNet(18, 30, counter);
 const Cardamom = neuralNet(17, 25, counter);
 const Carrot = neuralNet(10, 24, counter);
-
 const Cauliflower = neuralNet(16, 24, counter);
 const Celery = neuralNet(5, 27, counter);
 const Chicory = neuralNet(10, 24, counter);
 const Chilli_Pepper = neuralNet(18, 30, counter);
 const Chinese_Cabbage = neuralNet(13, 21, counter);
-
 const Chives = neuralNet(5, 30, counter);
 const Coriander = neuralNet(17, 27, counter);
 const Cucumber = neuralNet(15, 30, counter);
 const Dill = neuralNet(15, 32, counter);
 const Eggplant = neuralNet(21, 32, counter);
-
 const Endive = neuralNet(15, 24, counter);
 const Garden_Cress = neuralNet(13, 24, counter);
 const Garlic = neuralNet(9, 28, counter);
 const Ginger = neuralNet(15, 30, counter);
 const Horseradish = neuralNet(7, 23, counter);
-
 const Kale = neuralNet(4, 21, counter);
 const Kiwifruit = neuralNet(5, 35, counter);
 const Kohlrabi = neuralNet(7, 24, counter);
 const Leek = neuralNet(13, 24, counter);
 const Lettuce = neuralNet(15, 25, counter);
-
 const Mustard_Greens = neuralNet(10, 35, counter);
 const Okra = neuralNet(18, 32, counter);
 const Onion = neuralNet(8, 30, counter);
 const Oregano = neuralNet(15, 25, counter);
 const Parsley = neuralNet(7, 20, counter);
-
 const Parsnip = neuralNet(15, 20, counter);
 const Peanut = neuralNet(15, 34, counter);
 const Pineapple = neuralNet(23, 32, counter);
 const Potato = neuralNet(12, 27, counter);
 const Radish = neuralNet(5, 20, counter);
-
 const Raspberry = neuralNet(10, 25, counter);
 const Rhubarb = neuralNet(5, 20, counter);
 const Rosemary = neuralNet(6, 24, counter);
 const Sage = neuralNet(10, 25, counter);
 const Shallots = neuralNet(13, 24, counter);
-
 const Spinach = neuralNet(-7, 21, counter);
 const Strawberry = neuralNet(2, 30, counter);
 const Sugarcane = neuralNet(26, 33, counter);
 const Thyme = neuralNet(4, 28, counter);
 const Tomato = neuralNet(21, 29, counter);
-
 const Turnip = neuralNet(10, 18, counter);
 const Watermelon = neuralNet(18, 28, counter);
 //
 
-app.get("/", (req, res) => {
-  //   res.set("Content-Type", "text/plain");
-  res.json({ message: "hello" });
-});
-
 app.get("/suggestions", (req, res) => {
-  const minTemp = 0;
-  const maxTemp = 15;
+  var minTemp = 15;
+  var maxTemp = 20;
+  typeof req.query.tempLow === "undefined"
+    ? (min = 15)
+    : (min = req.query.tempLow);
+  typeof req.query.tempHigh === "undefined"
+    ? (max = 20)
+    : (max = req.query.tempHigh);
 
   const Asparagusprob = Asparagus.run([minTemp, maxTemp])[0];
   const Basilprob = Basil.run([minTemp, maxTemp])[0];
@@ -192,7 +183,7 @@ app.get("/suggestions", (req, res) => {
   finalResult = finalResult.sort((obj1, obj2) => {
     return obj2.value - obj1.value;
   });
-  console.table(finalResult);
+  // console.table(finalResult);
 
   var cropList = "";
   finalResult.forEach((obj, i) => {
@@ -203,7 +194,7 @@ app.get("/suggestions", (req, res) => {
       cropList = cropList.concat(",");
     }
   });
-  console.log(cropList);
+  // console.log(cropList);
   // "Asparagus,Broccoli,Brussels Sprouts,Garlic,Kale,Kohlrabi,Onion,Celery,Kohlrabi,Mustard Greens,Peanut",
   res.json({
     crops: cropList,
