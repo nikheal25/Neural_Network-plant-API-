@@ -200,9 +200,8 @@ app.get("/suggestions", (req, res) => {
   });
 });
 
-app.post("/post", (req, res) => {
-  res.set("Content-Type", "text/plain");
-  res.send("Hello World!");
-});
+app.get('/', (req, res) => {
+  res.send('surver is up')
+})
 
 app.listen(port, () => console.log(`Example app listening on ${port} port!`));
