@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "brain.js": "^2.0.0-alpha.12",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nn": "0.0.7"
   }
 }
